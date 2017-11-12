@@ -37,6 +37,7 @@ public class RfbBootstrap implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
     }
+
     @Transactional
     @Override
     public void run(String... strings) throws Exception {
