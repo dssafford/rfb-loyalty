@@ -99,6 +99,16 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name="rfb_location_id")
+    private RfbLocation homeLocation;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<RfbEventAttendance> rfbEventAttendances = new HashSet<>();
+
+
     public Long getId() {
         return id;
     }
@@ -126,6 +136,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public RfbLocation getHomeLocation() {
+        return homeLocation;
+    }
+
+    public void setHomeLocation(RfbLocation homeLocation) {
+        this.homeLocation = homeLocation;
+    }
+
+    public Set<RfbEventAttendance> getRfbEventAttendances() {
+        return rfbEventAttendances;
+    }
+
+    public void setRfbEventAttendances(Set<RfbEventAttendance> rfbEventAttendances) {
+        this.rfbEventAttendances = rfbEventAttendances;
     }
 
     public void setFirstName(String firstName) {
@@ -203,7 +229,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
-
+    public void addAuthority(Authority authority) {
+        this.authorities.add(authority);
+    }
     public Set<PersistentToken> getPersistentTokens() {
         return persistentTokens;
     }
