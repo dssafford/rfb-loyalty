@@ -1,9 +1,10 @@
 package com.doug.repository;
 
 import com.doug.domain.RfbLocation;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,9 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface RfbLocationRepository extends JpaRepository<RfbLocation, Long> {
+
+    List<RfbLocation> findAllByRunDayOfWeek(Integer dayOfWeek);
+
+    RfbLocation findByLocationName(String name);
 
 }

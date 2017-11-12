@@ -2,7 +2,6 @@ package com.doug.repository;
 
 import com.doug.RfbloyaltyApp;
 import com.doug.domain.SocialUserConnection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +25,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RfbloyaltyApp.class)
@@ -42,7 +42,7 @@ public class CustomSocialUsersConnectionRepositoryIntTest {
 
     private ConnectionRepository connectionRepository;
 
-    @Autowired
+//    @Autowired
     private SocialUserConnectionRepository socialUserConnectionRepository;
 
     @Before
